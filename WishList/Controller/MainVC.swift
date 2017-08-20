@@ -8,19 +8,39 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // set the data source and delegate of the tableview to the current view controller
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: tableview's datasource & delegate method
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WishItemCell", for: indexPath) as? WishItemCell else {
+            fatalError("fatal error with dequeuing WishItemCell!")
+        }
+        
+        
+        
+        return cell
+    }
 
 }
 

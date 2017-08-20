@@ -25,7 +25,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         super.viewDidLoad()
         
         // generate test data
-        generateTestData()
+//        generateTestData()
         
         // fetch result in core data
         fetchAttempt()
@@ -37,6 +37,25 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         // set the fetched result controller's delegate the current view controller
         resultController.delegate = self
         
+    }
+    
+    func generateTestData() {
+        let item0 = Item(context: mocContext) // the item inistantiated is inserted in the context scratch pad
+        item0.title = "Haha"
+        item0.price = 99.99
+        item0.details = "hahahahahahahahahahahaha"
+        
+        let item1 = Item(context: mocContext)
+        item1.title = "Hehe"
+        item1.price = 88.88
+        item1.details = "hehehehehehehehehehehehe"
+        
+        // sync it to the exteral storage
+        do {
+            try mocContext.save() // save the data on the context scratch pad to the storage
+        } catch {
+            print("data persistance error:\(error)")
+        }
     }
     
     func fetchAttempt() {
@@ -56,25 +75,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             try resultController.performFetch()
         } catch {
             print("Fetching data with error: \(error)")
-        }
-    }
-    
-    func generateTestData() {
-        let item0 = Item(context: mocContext)
-        item0.title = "Haha"
-        item0.price = 99.99
-        item0.details = "hahahahahahahahahahahaha"
-        
-        let item1 = Item(context: mocContext)
-        item1.title = "Hehe"
-        item1.price = 88.88
-        item1.details = "hehehehehehehehehehehehe"
-        
-        // sync it to the exteral storage
-        do {
-            try mocContext.save()
-        } catch {
-            print("data persistance error:\(error)")
         }
     }
     

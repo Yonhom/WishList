@@ -160,6 +160,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     
 
 }

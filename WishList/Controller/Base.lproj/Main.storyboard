@@ -166,7 +166,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="applyMaterial" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="MacBook Pro" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BvC-2C-R4g">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BvC-2C-R4g">
                                 <rect key="frame" x="176" y="72" width="191" height="122"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -178,7 +178,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iuO-6s-4rv">
                                 <rect key="frame" x="8" y="240" width="359" height="199"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -200,6 +199,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="applyMaterial" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="donePressed:" destination="kj4-gK-68y" eventType="touchUpInside" id="kww-a1-Pp9"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbO-re-i5p">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -214,7 +216,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99.99" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upW-lb-AjI">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upW-lb-AjI">
                                 <rect key="frame" x="176" y="202" width="191" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -254,6 +256,10 @@
                         <outlet property="detailImage" destination="TTz-47-Ibf" id="zWD-ml-Os1"/>
                         <outlet property="detailNavBar" destination="jbO-re-i5p" id="rgj-qO-cfR"/>
                         <outlet property="detailNavItem" destination="ikr-6S-C3K" id="OOL-o4-Olk"/>
+                        <outlet property="productDetail" destination="iuO-6s-4rv" id="mUM-mD-L7y"/>
+                        <outlet property="productName" destination="BvC-2C-R4g" id="DWc-bJ-pFj"/>
+                        <outlet property="productPrice" destination="upW-lb-AjI" id="Nl7-j4-xip"/>
+                        <outlet property="productStore" destination="JuQ-Uh-PaJ" id="0Gv-zT-9R1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNB-DP-sg2" userLabel="First Responder" sceneMemberID="firstResponder"/>

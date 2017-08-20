@@ -8,28 +8,47 @@
 
 import UIKit
 
-class DetailVC: UIViewController {
-
+class DetailVC: UIViewController, UINavigationBarDelegate {
+    
+    @IBOutlet weak var detailNavBar: UINavigationBar!
+    
+    /**
+     * for dynamically changing the title of the bar
+     */
+    @IBOutlet weak var detailNavItem: UINavigationItem!
+    /**
+     * for adding a gesture recognizer to change image
+     */
+    @IBOutlet weak var detailImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        initialize()
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func initialize() {
+        // set a delegate for navi bar, to extend navibar to the screen top
+        detailNavBar.delegate = self
+        
+        // add a gesture recognizer for detail image view for selecting image
+        detailImage.isUserInteractionEnabled = true
+        detailImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(detailImageTapped)))
     }
-    */
+    
+    @objc func detailImageTapped() {
+        print("detailImageTapped")
+    }
 
+    @IBAction func cancelPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: the UINavigationBar delegate method for deciding the postion of the bar
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+    
 }

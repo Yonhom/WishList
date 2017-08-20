@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5283736D1F49435600E087F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283736C1F49435600E087F4 /* AppDelegate.swift */; };
-		5283736F1F49435600E087F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283736E1F49435600E087F4 /* ViewController.swift */; };
+		5283736F1F49435600E087F4 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283736E1F49435600E087F4 /* MainVC.swift */; };
 		528373721F49435600E087F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528373701F49435600E087F4 /* Main.storyboard */; };
 		528373751F49435600E087F4 /* WishList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 528373731F49435600E087F4 /* WishList.xcdatamodeld */; };
 		528373771F49435600E087F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528373761F49435600E087F4 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		528373691F49435600E087F4 /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5283736C1F49435600E087F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5283736E1F49435600E087F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5283736E1F49435600E087F4 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		528373711F49435600E087F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		528373741F49435600E087F4 /* WishList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WishList.xcdatamodel; sourceTree = "<group>"; };
 		528373761F49435600E087F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,15 +56,47 @@
 		5283736B1F49435600E087F4 /* WishList */ = {
 			isa = PBXGroup;
 			children = (
-				5283736C1F49435600E087F4 /* AppDelegate.swift */,
-				5283736E1F49435600E087F4 /* ViewController.swift */,
-				528373701F49435600E087F4 /* Main.storyboard */,
-				528373761F49435600E087F4 /* Assets.xcassets */,
-				528373781F49435600E087F4 /* LaunchScreen.storyboard */,
 				5283737B1F49435600E087F4 /* Info.plist */,
-				528373731F49435600E087F4 /* WishList.xcdatamodeld */,
+				528373841F4943A300E087F4 /* Other */,
+				528373831F49439800E087F4 /* Controller */,
+				528373821F49439200E087F4 /* View */,
+				528373811F49438100E087F4 /* Model */,
 			);
 			path = WishList;
+			sourceTree = "<group>";
+		};
+		528373811F49438100E087F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		528373821F49439200E087F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		528373831F49439800E087F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				528373701F49435600E087F4 /* Main.storyboard */,
+				5283736E1F49435600E087F4 /* MainVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		528373841F4943A300E087F4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5283736C1F49435600E087F4 /* AppDelegate.swift */,
+				528373761F49435600E087F4 /* Assets.xcassets */,
+				528373731F49435600E087F4 /* WishList.xcdatamodeld */,
+				528373781F49435600E087F4 /* LaunchScreen.storyboard */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5283736F1F49435600E087F4 /* ViewController.swift in Sources */,
+				5283736F1F49435600E087F4 /* MainVC.swift in Sources */,
 				5283736D1F49435600E087F4 /* AppDelegate.swift in Sources */,
 				528373751F49435600E087F4 /* WishList.xcdatamodeld in Sources */,
 			);

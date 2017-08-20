@@ -56,6 +56,7 @@
 		5283736B1F49435600E087F4 /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				528373731F49435600E087F4 /* WishList.xcdatamodeld */,
 				5283737B1F49435600E087F4 /* Info.plist */,
 				528373841F4943A300E087F4 /* Other */,
 				528373831F49439800E087F4 /* Controller */,
@@ -93,7 +94,6 @@
 			children = (
 				5283736C1F49435600E087F4 /* AppDelegate.swift */,
 				528373761F49435600E087F4 /* Assets.xcassets */,
-				528373731F49435600E087F4 /* WishList.xcdatamodeld */,
 				528373781F49435600E087F4 /* LaunchScreen.storyboard */,
 			);
 			path = Other;
@@ -348,6 +348,7 @@
 				528373801F49435600E087F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

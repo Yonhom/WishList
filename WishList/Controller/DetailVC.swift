@@ -134,7 +134,28 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
     }
     
     @IBAction func donePressed(_ sender: UIButton) {
+        if wishItem == nil { // add a new item
+            let newItem = Item(context: mocContext)
+            newItem.title = productName.text
+            newItem.price = Double(productPrice.text!)!
+            newItem.details = productDetail.text
+            // select the store indicated by the store picker
+            if let fetchedStores = resultController.fetchedObjects {
+                newItem.toStore = fetchedStores[productStore.selectedRow(inComponent: 0)]
+            }
+            // persist it to the item
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            
+        } else {  // update the current item
+            
+        }
+        
+        // pop off detail page
+        dismiss(animated: true, completion: nil)
     }
+    
+    
     // MARK: the UINavigationBar delegate method for deciding the postion of the bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
@@ -160,11 +181,5 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         }
         return nil
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        <#code#>
-    }
-    
-    
     
 }

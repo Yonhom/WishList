@@ -100,7 +100,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             tableView.deleteRows(at: [indexPath!], with: .automatic)
             break
         case .insert:
-            tableView.insertRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
             break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .automatic)

@@ -9,7 +9,13 @@
 import UIKit
 
 class WishItemCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var itemPrice: UILabel!
+    @IBOutlet weak var itemDetail: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +25,13 @@ class WishItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
+    }
+    
+    func updateCell(with item: Item) {
+        itemTitle.text = item.title
+        itemPrice.text = "$\(item.price)"
+        itemDetail.text = item.details
     }
 
 }

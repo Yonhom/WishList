@@ -13,6 +13,9 @@ import UIKit
  */
 var useMaterial = false
 
+/**
+ * the extended function can be applied to any Object subclassing UIView
+ */
 extension UIView {
     
     

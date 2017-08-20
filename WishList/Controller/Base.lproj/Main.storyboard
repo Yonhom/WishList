@@ -101,6 +101,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="bfb-vj-xL7" secondAttribute="trailing" constant="4" id="Vut-1s-cyH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemDetail" destination="5Yw-J0-SgH" id="mTF-TZ-vSw"/>
+                                            <outlet property="itemImage" destination="X8D-XS-WGG" id="o0S-Av-op3"/>
+                                            <outlet property="itemPrice" destination="cqs-yr-Bej" id="PbM-9J-ySF"/>
+                                            <outlet property="itemTitle" destination="o78-zg-6gb" id="mUN-LC-8Cv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

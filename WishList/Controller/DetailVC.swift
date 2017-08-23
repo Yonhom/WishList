@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var detailNavBar: UINavigationBar!
     
@@ -43,6 +43,11 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
      */
     var wishItem: Item!
     
+    /**
+     for choosing image for the detail page
+     */
+    let imagePickerController = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +68,8 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         // add a gesture recognizer for detail image view for selecting image
         detailImage.isUserInteractionEnabled = true
         detailImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(detailImageTapped)))
+        // set up delegate for the image picker
+        imagePickerController.delegate = self
         
         // generate store
         //        generateStore()
@@ -86,6 +93,8 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
                     productStore.selectRow(indexInPicker.row, inComponent: 0, animated: false)
                 }
             }
+            
+            detailImage.image = wishItem.toImage?.image as? UIImage
             
         }
         
@@ -134,6 +143,7 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
     
     @objc func detailImageTapped() {
         print("detailImageTapped")
+        present(imagePickerController, animated: true, completion: nil)
     }
 
     @IBAction func cancelPressed(_ sender: Any) {
@@ -154,6 +164,11 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
             if let fetchedStores = resultController.fetchedObjects {
                 newItem.toStore = fetchedStores[productStore.selectedRow(inComponent: 0)]
             }
+            // create a new image item
+            let newImage = Image(context: mocContext)
+            newImage.image = detailImage.image
+            // associate the new image with new item
+            newItem.toImage = newImage
             
         } else {  // update the current item
             wishItem.title = productName.text
@@ -163,6 +178,12 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
             if let fetchedStores = resultController.fetchedObjects {
                 wishItem.toStore = fetchedStores[productStore.selectedRow(inComponent: 0)]
             }
+            
+            // create a new image item
+            let newImage = Image(context: mocContext)
+            newImage.image = detailImage.image
+            // associate the new image with the edited item
+            wishItem.toImage = newImage
         }
         
         // persist it to the item
@@ -197,6 +218,14 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
             return stores[row].name
         }
         return nil
+    }
+    
+    // MARK: image picker controller delegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        detailImage.image = image
+        
+        imagePickerController.dismiss(animated: true, completion: nil)
     }
     
 }

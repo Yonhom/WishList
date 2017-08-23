@@ -32,6 +32,7 @@ class WishItemCell: UITableViewCell {
         itemTitle.text = item.title
         itemPrice.text = "$\(item.price)"
         itemDetail.text = item.details
+        itemImage.image = item.toImage?.image as? UIImage
     }
 
 }

@@ -31,11 +31,14 @@
                                     <constraint firstAttribute="height" constant="28" id="Ftd-QV-6TU"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title=""/>
+                                    <segment title="Newest"/>
+                                    <segment title="Price"/>
+                                    <segment title="Title"/>
                                 </segments>
                                 <color key="tintColor" red="0.37979609342611881" green="0.36664091769141954" blue="0.69190483196132679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="itemOrderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="r3k-V8-FIn"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-Ly-gMg">
                                 <rect key="frame" x="8" y="108" width="359" height="559"/>
@@ -136,6 +139,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="itemOrderControl" destination="Xy9-U8-6Bg" id="IYH-St-PvA"/>
                         <outlet property="tableView" destination="4Gl-Ly-gMg" id="ESA-bS-huh"/>
                         <segue destination="kj4-gK-68y" kind="showDetail" identifier="EditDetail" id="hUf-jt-Hv2"/>
                     </connections>

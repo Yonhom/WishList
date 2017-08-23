@@ -72,7 +72,7 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         imagePickerController.delegate = self
         
         // generate store
-        //        generateStore()
+//                generateStore()
         
         // fetch store (the store info need to be fetched first, then looking for the item to edit)
         fetchAttempt()

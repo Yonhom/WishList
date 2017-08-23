@@ -12,6 +12,7 @@ import CoreData
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var itemOrderControl: UISegmentedControl!
     
     /**
      * core data generate & fetch controller
@@ -61,8 +62,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func fetchAttempt() {
         // the fetch request
         let fetchRequest = NSFetchRequest<Item>(entityName: "Item")
-        let sortDesc = NSSortDescriptor(key: "generated", ascending: false)
-        fetchRequest.sortDescriptors = [sortDesc]
+        let dateSort = NSSortDescriptor(key: "generated", ascending: false)
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        if itemOrderControl.selectedSegmentIndex == 0 {
+            fetchRequest.sortDescriptors = [dateSort]
+        } else if itemOrderControl.selectedSegmentIndex == 1 {
+            fetchRequest.sortDescriptors = [priceSort]
+        }else if itemOrderControl.selectedSegmentIndex == 2 {
+            fetchRequest.sortDescriptors = [titleSort]
+        }
         
         // the controller for generating and fetching data
         resultController = NSFetchedResultsController<Item>(
@@ -191,6 +200,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         let itemToDelete = resultController.object(at: indexPath)
         mocContext.delete(itemToDelete)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    // MARK: segmented control change callback
+    
+    @IBAction func itemOrderChanged(_ sender: UISegmentedControl) {
+        fetchAttempt()
+        tableView.reloadData()
     }
     
 }

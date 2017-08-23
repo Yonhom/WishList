@@ -181,7 +181,17 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         performSegue(withIdentifier: "EditDetail", sender: itemToEdit)
     }
     
+    // MARK: delete-related tableview method
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Delete"
+    }
     
-
+    // implement this method to open swipe to delete functionality
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let itemToDelete = resultController.object(at: indexPath)
+        mocContext.delete(itemToDelete)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
 }
 

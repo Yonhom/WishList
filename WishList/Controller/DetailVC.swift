@@ -73,10 +73,8 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         // if wishItem is not nil, we are at editing page, change nav bar title
         if wishItem == nil {
             detailNavItem.title = "Add"
-            detailNavItem.rightBarButtonItem = nil
         } else {
             detailNavItem.title = "Edit"
-            detailNavItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteCurrentItem))
             
             // fill form with item to edit
             productName.text = wishItem.title
@@ -136,10 +134,6 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
     
     @objc func detailImageTapped() {
         print("detailImageTapped")
-    }
-    
-    @objc func deleteCurrentItem() {
-        print("deleteCurrentItem")
     }
 
     @IBAction func cancelPressed(_ sender: Any) {

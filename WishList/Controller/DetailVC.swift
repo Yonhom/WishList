@@ -48,7 +48,6 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         
         initialize()
         
-        
     }
     
     func initialize() {
@@ -65,6 +64,12 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         detailImage.isUserInteractionEnabled = true
         detailImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(detailImageTapped)))
         
+        // generate store
+        //        generateStore()
+        
+        // fetch store (the store info need to be fetched first, then looking for the item to edit)
+        fetchAttempt()
+        
         // if wishItem is not nil, we are at editing page, change nav bar title
         if wishItem == nil {
             detailNavItem.title = "Add"
@@ -72,13 +77,21 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
         } else {
             detailNavItem.title = "Edit"
             detailNavItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteCurrentItem))
+            
+            // fill form with item to edit
+            productName.text = wishItem.title
+            productPrice.text = String(wishItem.price)
+            productDetail.text = wishItem.details
+            
+            if let store = wishItem.toStore {
+                if let indexInPicker = resultController.indexPath(forObject: store) {
+                    productStore.selectRow(indexInPicker.row, inComponent: 0, animated: false)
+                }
+            }
+            
         }
         
-        // generate store
-//        generateStore()
         
-        // fetch store
-        fetchAttempt()
     }
     
     /**
@@ -134,6 +147,10 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
     }
     
     @IBAction func donePressed(_ sender: UIButton) {
+        /*
+         whether a new item is added or a existing item updated, we only need to add/update the
+         item itself, core data will update the ui for us automatically
+         */
         if wishItem == nil { // add a new item
             let newItem = Item(context: mocContext)
             newItem.title = productName.text
@@ -143,13 +160,19 @@ class DetailVC: UIViewController, UINavigationBarDelegate, UIPickerViewDelegate,
             if let fetchedStores = resultController.fetchedObjects {
                 newItem.toStore = fetchedStores[productStore.selectedRow(inComponent: 0)]
             }
-            // persist it to the item
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            
             
         } else {  // update the current item
-            
+            wishItem.title = productName.text
+            wishItem.price = Double(productPrice.text!)!
+            wishItem.details = productDetail.text
+            // select the store indicated by the store picker
+            if let fetchedStores = resultController.fetchedObjects {
+                wishItem.toStore = fetchedStores[productStore.selectedRow(inComponent: 0)]
+            }
         }
+        
+        // persist it to the item
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         // pop off detail page
         dismiss(animated: true, completion: nil)

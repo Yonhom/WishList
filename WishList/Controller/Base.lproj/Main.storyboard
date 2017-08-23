@@ -131,13 +131,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0O5-vo-xP0">
                             <color key="tintColor" red="0.37979609339999998" green="0.36664091770000001" blue="0.69190483199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="kj4-gK-68y" kind="showDetail" id="Td1-0J-WR7"/>
+                                <segue destination="kj4-gK-68y" kind="showDetail" identifier="AddDetail" id="Td1-0J-WR7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4Gl-Ly-gMg" id="ESA-bS-huh"/>
-                        <segue destination="kj4-gK-68y" kind="showDetail" id="hUf-jt-Hv2"/>
+                        <segue destination="kj4-gK-68y" kind="showDetail" identifier="EditDetail" id="hUf-jt-Hv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -289,6 +289,6 @@
         <image name="placeholder" width="1024" height="723"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Td1-0J-WR7"/>
+        <segue reference="hUf-jt-Hv2"/>
     </inferredMetricsTieBreakers>
 </document>

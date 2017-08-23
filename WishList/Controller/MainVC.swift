@@ -85,7 +85,22 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         cell.updateCell(with: item)
     }
     
-    // MARK: FetchResultController's delegate method --- for communicating data change to the table view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "AddDetail" {
+                
+            }
+            if identifier == "EditDetail" {
+                let destinationVC = segue.destination as! DetailVC
+                let wishItem = sender as! Item
+                destinationVC.wishItem = wishItem
+            }
+
+        }
+        
+    }
+    
+    // MARK: CoreData FetchResultController's delegate method --- for communicating data change to the table view
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
@@ -161,7 +176,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        // segue to detail page with item to be updated
+        let itemToEdit = resultController.object(at: indexPath)
+        performSegue(withIdentifier: "EditDetail", sender: itemToEdit)
     }
     
     
